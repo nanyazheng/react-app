@@ -1,0 +1,10 @@
+.flag-answer {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    font-size: 1.3em;
+}
+
+.button {
+    margin: auto 5px;
+}

@@ -1,0 +1,18 @@
+.flag-game {
+  text-align: center;
+}
+
+header {
+  display: flex;
+  height: 20vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  justify-content: center;
+}
+
+.title-text {
+  font-size: 3.5em;
+  color: white;
+  text-shadow: 3px 3px 3px black;
+}
+

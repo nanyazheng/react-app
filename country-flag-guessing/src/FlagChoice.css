@@ -1,0 +1,22 @@
+.form {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1000px;
+    margin: 0 auto;
+    font-size: 1.3em;
+}
+
+.button {
+    background-color: skyblue;
+    font-size: 1.3em;
+    color: seashell;
+}
+
+.button:hover {
+    background-color: rgb(0, 153, 255);   
+}
+
+.button:focus {
+    font-size: 1.5em;
+}
+
