@@ -1,13 +1,9 @@
-import React, {Component} from "react";
+import React from "react";
 
-class TodoItem extends Component {
-    render() {
-        return (
-            <div>
-
-            </div>
-        )
-    }
-}
+const TodoItem = ({name}) => (
+    <li>
+        {name}
+    </li>
+)
 
 export default TodoItem;
