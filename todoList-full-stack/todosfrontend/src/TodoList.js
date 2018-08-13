@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import TodoForm from "./TodoForm";
 import TodoItem from "./TodoItem";
-const APIURL = "api/todos";
+const APIURL = "api/todos/";
 
 class TodoList extends Component {
     constructor(props) {
@@ -10,6 +10,7 @@ class TodoList extends Component {
             todos: []
         }
         this.handleNewTodo = this.handleNewTodo.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
     
     componentWillMount() {
@@ -60,11 +61,36 @@ class TodoList extends Component {
             console.log(e);
         }
     }
+    async handleDelete(id) {
+        try {
+            const deleteURL = APIURL + id;
+            const resp = await fetch(deleteURL, {
+                method: "delete"
+            });
+            if (!resp.ok) {
+                if (resp.status >= 400 && resp.status < 500) {
+                    let data = await resp.json();
+                    let err = {errorMessage: data.message};
+                    throw err;
+                } else {
+                    let err = {errorMessage: 'Please try again later, server is not responding!'};
+                    throw err;
+                }
+            }
+            const todos = this.state.todos.filter(todo => todo._id !== id);
+            console.log(todos);
+            this.setState({todos});
+
+        } catch(e) {
+            console.log(e);
+        }
+    }
     render() {
         const todos = this.state.todos.map((t) => (
             <TodoItem 
             key={t._id}
             {...t}
+            onDelete={this.handleDelete.bind(this, t._id)}
             />
         ))
         return (
